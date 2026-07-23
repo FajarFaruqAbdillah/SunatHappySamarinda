@@ -1,0 +1,71 @@
+---
+import { whatsappUrl } from "../data/site";
+
+const registrationUrl = whatsappUrl(
+  "Halo Rumah Sunat Happy, saya ingin daftar konsultasi",
+);
+---
+
+<section class="hero" aria-label="Layanan Rumah Sunat Happy Samarinda">
+  <img
+    class="hero-media"
+    src="/images/hero-clinic.jpg"
+    alt="Tim Rumah Sunat Happy Samarinda bersama pasien"
+    width="800"
+    height="533"
+    fetchpriority="high"
+  />
+  <div class="hero-copy">
+    <p class="eyebrow">Sunat modern di Samarinda sejak 2016</p>
+    <h1>Sunat nyaman, minim nyeri, dan tetap didampingi sampai sembuh.</h1>
+    <p class="hero-text">
+      Rumah Sunat Happy melayani sunat bayi, anak, dan dewasa dengan pilihan
+      metode modern, bius tanpa jarum suntik, serta kontrol pemulihan langsung
+      maupun via WhatsApp.
+    </p>
+    <div class="hero-actions">
+      <a
+        class="btn btn-primary"
+        href={registrationUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Daftar via WhatsApp
+      </a>
+      <a class="btn btn-secondary" href="#metode">Lihat Metode</a>
+    </div>
+    <div class="trust-row" aria-label="Ringkasan keunggulan">
+      <div>
+        <strong>6+</strong>
+        <span>Metode tersedia</span>
+      </div>
+      <div>
+        <strong>2016</strong>
+        <span>Mulai melayani</span>
+      </div>
+      <div>
+        <strong>3</strong>
+        <span>Kontak cepat</span>
+      </div>
+      <div>
+        <strong>500+</strong>
+        <span>Sunat per tahun</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-card" aria-label="Keunggulan Rumah Sunat Happy">
+    <div class="hero-badge">
+      <span>Bius modern</span>
+      <strong>Tanpa jarum suntik</strong>
+      <small>Minim nyeri</small>
+    </div>
+  </div>
+</section>
+
+<section class="logo-strip" aria-label="Janji layanan">
+  <span>Tanpa Suntik</span>
+  <span>Tanpa Jahit</span>
+  <span>Tanpa Perban</span>
+  <span>Perawatan Mudah</span>
+  <span>Bebas Kontrol</span>
+</section>

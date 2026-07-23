@@ -1,0 +1,25 @@
+---
+import { methods } from "../data/site";
+---
+
+<section class="section" id="metode">
+  <div class="section-heading">
+    <p class="eyebrow">Pilihan metode</p>
+    <h2>Metode sunat modern sesuai kebutuhan pasien.</h2>
+    <p>
+      Tim akan membantu keluarga memilih metode yang paling cocok berdasarkan
+      usia, kondisi, dan aktivitas pasien.
+    </p>
+  </div>
+  <div class="method-grid">
+    {
+      methods.map((method, index) => (
+        <article class="method-card">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{method.name}</h3>
+          <p>{method.description}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

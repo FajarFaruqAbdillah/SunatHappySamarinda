@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.sunathappy\.com$ [NC]
+RewriteRule ^ https://sunathappy.com%{REQUEST_URI} [L,R=301]
+
+ErrorDocument 404 /404.html

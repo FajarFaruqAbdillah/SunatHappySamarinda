@@ -1,0 +1,23 @@
+---
+import { whatsappUrl } from "../data/site";
+
+const currentYear = new Date().getFullYear();
+const consultationUrl = whatsappUrl(
+  "Halo Rumah Sunat Happy, saya ingin konsultasi",
+);
+---
+
+<a
+  class="floating-wa"
+  href={consultationUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat WhatsApp Rumah Sunat Happy"
+>
+  WA
+</a>
+
+<footer class="site-footer">
+  <p>&copy; {currentYear} Rumah Sunat Happy Samarinda.</p>
+  <a href="#top">Kembali ke atas</a>
+</footer>

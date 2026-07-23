@@ -1,0 +1,20 @@
+---
+import { benefits } from "../data/site";
+---
+
+<section class="section split" id="layanan">
+  <div>
+    <p class="eyebrow">Kenapa memilih kami</p>
+    <h2>Pengalaman sunat yang lebih tenang untuk anak dan keluarga.</h2>
+  </div>
+  <div class="benefit-grid">
+    {
+      benefits.map((benefit) => (
+        <article class="benefit-card">
+          <span class="check-icon" aria-hidden="true">&#10003;</span>
+          <p>{benefit}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

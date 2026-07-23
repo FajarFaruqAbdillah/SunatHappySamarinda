@@ -1,0 +1,94 @@
+---
+import { contacts, site } from "../data/site";
+---
+
+<section class="contact-section" id="kontak">
+  <div class="contact-card">
+    <div>
+      <p class="eyebrow">Kontak dan lokasi</p>
+      <h2>Siap konsultasi metode sunat yang paling cocok?</h2>
+      <p>{site.address}.</p>
+      <div class="contact-actions">
+        {
+          contacts.map((contact) => (
+            <a
+              href={`https://wa.me/${contact.wa}?text=${encodeURIComponent("Halo Rumah Sunat Happy, saya ingin konsultasi")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {contact.name}: {contact.phone}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <form
+      class="lead-form"
+      id="lead-form"
+      data-whatsapp={site.primaryWhatsapp}
+    >
+      <label>
+        Nama
+        <input
+          type="text"
+          name="name"
+          placeholder="Nama lengkap"
+          autocomplete="name"
+          required
+        />
+      </label>
+      <label>
+        Nomor WhatsApp
+        <input
+          type="tel"
+          name="phone"
+          placeholder="08xx xxxx xxxx"
+          autocomplete="tel"
+          inputmode="tel"
+          required
+        />
+      </label>
+      <label>
+        Kebutuhan
+        <select name="need" required>
+          <option value="Konsultasi metode sunat">Konsultasi metode sunat</option>
+          <option value="Daftar tindakan">Daftar tindakan</option>
+          <option value="Sunat massal / kerja sama">
+            Sunat massal / kerja sama
+          </option>
+        </select>
+      </label>
+      <button class="btn btn-primary" type="submit">Kirim ke WhatsApp</button>
+      <small>
+        WhatsApp akan terbuka dengan pesan konsultasi yang sudah terisi.
+      </small>
+    </form>
+    <div class="map-panel" aria-label="Peta lokasi Rumah Sunat Happy Samarinda">
+      <div class="map-copy">
+        <p class="eyebrow">Google Maps</p>
+        <h3>Rumah Sunat Happy Samarinda</h3>
+        <p>
+          Gunakan peta ini untuk melihat rute menuju lokasi praktik di Sempaja,
+          Samarinda.
+        </p>
+        <a
+          class="btn btn-map"
+          href={site.mapUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Buka di Google Maps
+        </a>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src={site.mapEmbedUrl}
+          title="Peta Rumah Sunat Happy Samarinda"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>

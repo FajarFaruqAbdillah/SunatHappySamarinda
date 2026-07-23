@@ -1,37 +1,52 @@
-# Rumah Sunat Happy Marketing Website
+# Rumah Sunat Happy Samarinda
 
-Website Django modern untuk kebutuhan marketing Rumah Sunat Happy Samarinda.
+Website marketing statis untuk [sunathappy.com](https://sunathappy.com), dibuat
+dengan Astro. Hasil build berupa HTML, CSS, JavaScript, dan gambar yang dapat
+langsung diunggah ke `public_html` Biznet Gio.
 
 ## Menjalankan Project
 
+Persyaratan: Node.js 22.12 atau lebih baru.
+
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\activate
-python -m pip install -r requirements.txt
-python manage.py runserver
+pnpm install
+pnpm dev
 ```
 
-Buka `http://127.0.0.1:8000/`.
+Buka alamat yang ditampilkan Astro, biasanya `http://localhost:4321`.
 
-## Deploy ke Railway
+## Pemeriksaan dan Build
 
-Project ini sudah disiapkan untuk Railway:
+```powershell
+pnpm check
+pnpm build
+pnpm preview
+```
 
-- `Procfile` menjalankan Gunicorn.
-- `railway.json` menjalankan `collectstatic` saat build.
-- WhiteNoise menyajikan static files Django.
+Hasil website statis berada di folder `dist/`.
 
-Environment variable yang disarankan di Railway:
+## Deploy ke Biznet Gio
 
-```text
-DEBUG=False
-SECRET_KEY=<isi-dengan-secret-key-kuat>
-ALLOWED_HOSTS=.up.railway.app,sunatmoderensamarinda.com,www.sunatmoderensamarinda.com
+1. Jalankan `pnpm build`.
+2. Unggah seluruh isi folder `dist/` ke folder `public_html` melalui File
+   Manager atau FTP.
+3. Pastikan file `index.html` berada langsung di dalam `public_html`, bukan di
+   dalam subfolder `dist`.
+4. Aktifkan SSL gratis untuk `sunathappy.com` dan `www.sunathappy.com`.
+5. Buka domain dan periksa tombol WhatsApp serta Google Maps.
+
+Arsip siap unggah juga dapat dibuat dari isi `dist/`:
+
+```powershell
+New-Item -ItemType Directory -Path deploy -Force
+Compress-Archive -Path dist\* -DestinationPath deploy\sunathappy-public_html.zip -Force
 ```
 
 ## Struktur
 
-- `sunat_happy/` konfigurasi utama Django.
-- `marketing/` aplikasi landing page.
-- `marketing/templates/marketing/home.html` halaman utama.
-- `marketing/static/marketing/css/styles.css` styling modern.
+- `src/components/` komponen tiap bagian halaman.
+- `src/data/site.ts` konten, nomor WhatsApp, dan alamat.
+- `src/layouts/BaseLayout.astro` metadata SEO dan JavaScript global.
+- `src/pages/` halaman yang dibangun Astro.
+- `src/styles/global.css` tampilan responsif.
+- `public/` gambar, favicon, sitemap, robots, dan konfigurasi hosting.

@@ -1,0 +1,20 @@
+---
+import { testimonials } from "../data/site";
+---
+
+<section class="section testimonials">
+  <div>
+    <p class="eyebrow">Testimoni</p>
+    <h2>Dipercaya keluarga di Samarinda.</h2>
+  </div>
+  <div class="testimonial-grid">
+    {
+      testimonials.map((testimonial) => (
+        <article class="testimonial-card">
+          <p>&ldquo;{testimonial.quote}&rdquo;</p>
+          <strong>{testimonial.name}</strong>
+        </article>
+      ))
+    }
+  </div>
+</section>

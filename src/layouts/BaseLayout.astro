@@ -1,0 +1,130 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  robots?: string;
+}
+
+const {
+  title = "Rumah Sunat Happy Samarinda | Sunat Modern Minim Nyeri",
+  description = "Rumah Sunat Happy Samarinda melayani sunat modern untuk bayi, anak, dan dewasa dengan pilihan metode nyaman, minim nyeri, dan pendampingan sampai sembuh.",
+  image = "/images/hero-clinic.jpg",
+  robots = "index, follow",
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL(site.url);
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const socialImage = new URL(image, siteUrl);
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: site.name,
+  url: site.url,
+  image: socialImage.toString(),
+  telephone: "+62 812-5868-203",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Jl. Wahid Hasim 2, Ruko Green City No. 04, Sempaja",
+    addressLocality: "Samarinda",
+    addressRegion: "Kalimantan Timur",
+    addressCountry: "ID",
+  },
+  sameAs: [site.mapUrl],
+};
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#e8362d" />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:site_name" content={site.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <title>{title}</title>
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(structuredData)}
+    ></script>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      const menuToggle = document.querySelector<HTMLButtonElement>(".menu-toggle");
+      const navigation = document.querySelector<HTMLElement>(".main-nav");
+
+      const closeMenu = () => {
+        navigation?.classList.remove("is-open");
+        menuToggle?.setAttribute("aria-expanded", "false");
+        menuToggle?.setAttribute("aria-label", "Buka menu");
+      };
+
+      menuToggle?.addEventListener("click", () => {
+        const isOpen = navigation?.classList.toggle("is-open") ?? false;
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Tutup menu" : "Buka menu");
+      });
+
+      navigation?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+
+      const leadForm = document.querySelector<HTMLFormElement>("#lead-form");
+
+      leadForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const data = new FormData(leadForm);
+        const name = String(data.get("name") ?? "").trim();
+        const phone = String(data.get("phone") ?? "").trim();
+        const need = String(data.get("need") ?? "").trim();
+        const whatsapp = leadForm.dataset.whatsapp;
+
+        if (!name || !phone || !need || !whatsapp) return;
+
+        const message = [
+          "Halo Rumah Sunat Happy, saya ingin konsultasi.",
+          `Nama: ${name}`,
+          `No. WhatsApp: ${phone}`,
+          `Kebutuhan: ${need}`,
+        ].join("\n");
+
+        window.open(
+          `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`,
+          "_blank",
+          "noopener,noreferrer",
+        );
+      });
+    </script>
+  </body>
+</html>

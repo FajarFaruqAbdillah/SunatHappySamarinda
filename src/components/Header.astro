@@ -1,0 +1,43 @@
+---
+import { whatsappUrl } from "../data/site";
+
+const consultationUrl = whatsappUrl(
+  "Halo Rumah Sunat Happy, saya ingin konsultasi sunat",
+);
+---
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top" aria-label="Rumah Sunat Happy Samarinda">
+    <span class="brand-mark">SH</span>
+    <span>
+      <strong>Rumah Sunat Happy</strong>
+      <small>Samarinda</small>
+    </span>
+  </a>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Buka menu"
+    aria-expanded="false"
+    aria-controls="main-navigation"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="main-nav" id="main-navigation" aria-label="Navigasi utama">
+    <a href="#layanan">Layanan</a>
+    <a href="#metode">Metode</a>
+    <a href="#proses">Proses</a>
+    <a href="#galeri">Galeri</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+  <a
+    class="header-cta"
+    href={consultationUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Konsultasi Gratis
+  </a>
+</header>
