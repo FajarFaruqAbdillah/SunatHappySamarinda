@@ -8,7 +8,7 @@ import { galleryImages } from "../data/gallery";
 <BaseLayout
   title="Galeri Rumah Sunat Happy Samarinda"
   description="Dokumentasi tim, layanan, dan kegiatan Rumah Sunat Happy Samarinda."
-  image="/images/gallery-3.jpg"
+  image="/images/gallery-3.webp"
 >
   <Header />
   <main class="gallery-page">
@@ -38,6 +38,7 @@ import { galleryImages } from "../data/gallery";
                 width={image.width}
                 height={image.height}
                 loading="lazy"
+                decoding="async"
               />
             </a>
             <figcaption>{image.caption}</figcaption>

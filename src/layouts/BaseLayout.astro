@@ -13,14 +13,14 @@ interface Props {
 const {
   title = "Rumah Sunat Happy Samarinda | Sunat Modern Minim Nyeri",
   description = "Rumah Sunat Happy Samarinda melayani sunat modern untuk bayi, anak, dan dewasa dengan pilihan metode nyaman, minim nyeri, dan pendampingan sampai sembuh.",
-  image = "/images/hero-clinic.jpg",
+  image = "/images/hero-clinic.webp",
   robots = "index, follow",
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL(site.url);
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const socialImage = new URL(image, siteUrl);
-const logoImage = new URL("/images/logo-sunat-happy.jpg", siteUrl);
+const logoImage = new URL("/images/logo-sunat-happy.webp", siteUrl);
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "MedicalClinic",
@@ -49,7 +49,7 @@ const structuredData = {
     <meta name="theme-color" content="#e8362d" />
     <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/images/logo-sunat-happy.jpg" type="image/jpeg" />
+    <link rel="icon" href="/images/logo-sunat-happy.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
