@@ -79,16 +79,14 @@ a {
   min-width: max-content;
 }
 
-.brand-mark {
-  display: grid;
-  width: 46px;
-  height: 46px;
-  place-items: center;
-  color: var(--white);
-  background: var(--brand);
-  border-radius: 8px;
-  font-family: "Plus Jakarta Sans", Inter, sans-serif;
-  font-weight: 800;
+.brand-logo {
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  background: var(--white);
+  border: 1px solid #f2d7cd;
+  border-radius: 50%;
 }
 
 .brand strong,
@@ -897,6 +895,12 @@ summary {
 
   .brand strong {
     font-size: 0.9rem;
+  }
+
+  .brand-logo {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
   }
 
   .hero,
