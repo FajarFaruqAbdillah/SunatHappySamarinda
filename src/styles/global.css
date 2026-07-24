@@ -546,8 +546,10 @@ details p {
 .gallery-slide figcaption,
 .gallery-item figcaption {
   padding: 14px 16px;
-  color: #344054;
-  font-weight: 700;
+  color: var(--white);
+  background: var(--ink);
+  font-weight: 800;
+  line-height: 1.4;
 }
 
 .gallery-page {

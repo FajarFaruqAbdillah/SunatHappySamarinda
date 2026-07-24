@@ -15,18 +15,18 @@ export const galleryImages: GalleryImage[] = [
     height: 1200,
   },
   {
-    src: "/images/team-smile.jpg",
-    alt: "Tim Rumah Sunat Happy Samarinda tersenyum bersama",
-    caption: "Tim yang ramah dan siap mendampingi keluarga",
-    width: 1600,
-    height: 1200,
-  },
-  {
     src: "/images/gallery-1.jpg",
     alt: "Banner layanan Sunat Happy Samarinda berwarna biru dan hijau",
     caption: "Sunat Happy: aman, nyaman, dan profesional",
     width: 1402,
     height: 1122,
+  },
+  {
+    src: "/images/documentation-03.jpg",
+    alt: "Pasien anak tersenyum bersama tim Rumah Sunat Happy",
+    caption: "Senyum pasien adalah kebahagiaan kami",
+    width: 900,
+    height: 1600,
   },
   {
     src: "/images/documentation-01.jpg",
@@ -36,6 +36,13 @@ export const galleryImages: GalleryImage[] = [
     height: 1600,
   },
   {
+    src: "/images/team-smile.jpg",
+    alt: "Tim Rumah Sunat Happy Samarinda tersenyum bersama",
+    caption: "Tim yang ramah dan siap mendampingi keluarga",
+    width: 1600,
+    height: 1200,
+  },
+  {
     src: "/images/documentation-02.jpg",
     alt: "Dokumentasi pasien anak bersama tim Rumah Sunat Happy",
     caption: "Pendampingan yang hangat dan ramah",
@@ -43,11 +50,11 @@ export const galleryImages: GalleryImage[] = [
     height: 1600,
   },
   {
-    src: "/images/documentation-03.jpg",
-    alt: "Pasien anak tersenyum bersama tim Rumah Sunat Happy",
-    caption: "Senyum pasien adalah kebahagiaan kami",
-    width: 900,
-    height: 1600,
+    src: "/images/gallery-2.jpg",
+    alt: "Tim dalam workshop sunat modern di Samarinda",
+    caption: "Workshop dan pengembangan kompetensi tim",
+    width: 800,
+    height: 600,
   },
   {
     src: "/images/documentation-04.jpg",
@@ -62,12 +69,5 @@ export const galleryImages: GalleryImage[] = [
     caption: "Anak tetap tenang dan percaya diri",
     width: 900,
     height: 1600,
-  },
-  {
-    src: "/images/gallery-2.jpg",
-    alt: "Tim dalam workshop sunat modern di Samarinda",
-    caption: "Workshop dan pengembangan kompetensi tim",
-    width: 800,
-    height: 600,
   },
 ];
