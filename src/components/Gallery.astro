@@ -1,25 +1,86 @@
+---
+import { galleryImages } from "../data/gallery";
+---
+
 <section class="section gallery-section" id="galeri">
-  <div class="section-heading">
-    <p class="eyebrow">Galeri</p>
-    <h2>Suasana layanan dan kegiatan Rumah Sunat Happy.</h2>
+  <div class="gallery-heading">
+    <div>
+      <p class="eyebrow">Galeri</p>
+      <h2>Suasana layanan dan kegiatan Rumah Sunat Happy.</h2>
+    </div>
+    <div class="gallery-actions">
+      <a class="gallery-all-link" href="/galeri/">Lihat semua foto</a>
+      <div class="gallery-controls" aria-label="Navigasi galeri">
+        <button
+          class="gallery-control"
+          type="button"
+          data-gallery-prev
+          aria-label="Foto sebelumnya"
+          aria-controls="gallery-scroller"
+        >
+          &larr;
+        </button>
+        <button
+          class="gallery-control"
+          type="button"
+          data-gallery-next
+          aria-label="Foto berikutnya"
+          aria-controls="gallery-scroller"
+        >
+          &rarr;
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="gallery-grid">
-    <img
-      src="/images/gallery-3.jpg"
-      alt="Tim Rumah Sunat Happy Samarinda dalam kegiatan terbaru"
-      width="1600"
-      height="1200"
-      loading="lazy"
-    />
-    <img
-      src="/images/gallery-1.jpg"
-      alt="Informasi layanan Rumah Sunat Happy Samarinda"
-      loading="lazy"
-    />
-    <img
-      src="/images/gallery-2.jpg"
-      alt="Tim Rumah Sunat Happy dalam workshop sunat modern"
-      loading="lazy"
-    />
+
+  <div class="gallery-scroller" id="gallery-scroller" tabindex="0">
+    {
+      galleryImages.map((image) => (
+        <figure
+          class:list={[
+            "gallery-slide",
+            image.height > image.width && "is-portrait",
+          ]}
+        >
+          <a
+            class="gallery-slide-media"
+            href={image.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Buka foto: ${image.caption}`}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              loading="lazy"
+            />
+          </a>
+          <figcaption>{image.caption}</figcaption>
+        </figure>
+      ))
+    }
   </div>
 </section>
+
+<script>
+  const galleryScroller =
+    document.querySelector<HTMLElement>("#gallery-scroller");
+  const previousButton =
+    document.querySelector<HTMLButtonElement>("[data-gallery-prev]");
+  const nextButton =
+    document.querySelector<HTMLButtonElement>("[data-gallery-next]");
+
+  const moveGallery = (direction: number) => {
+    if (!galleryScroller) return;
+
+    galleryScroller.scrollBy({
+      left: direction * Math.min(galleryScroller.clientWidth * 0.85, 620),
+      behavior: "smooth",
+    });
+  };
+
+  previousButton?.addEventListener("click", () => moveGallery(-1));
+  nextButton?.addEventListener("click", () => moveGallery(1));
+</script>

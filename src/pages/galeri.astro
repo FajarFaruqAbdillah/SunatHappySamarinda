@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { galleryImages } from "../data/gallery";
+---
+
+<BaseLayout
+  title="Galeri Rumah Sunat Happy Samarinda"
+  description="Dokumentasi tim, layanan, dan kegiatan Rumah Sunat Happy Samarinda."
+  image="/images/gallery-3.jpg"
+>
+  <Header />
+  <main class="gallery-page">
+    <section class="gallery-page-intro">
+      <p class="eyebrow">Galeri Lengkap</p>
+      <h1>Dokumentasi Rumah Sunat Happy.</h1>
+      <p>
+        Momen kebersamaan tim dan pasien dalam layanan sunat modern yang ramah,
+        nyaman, dan profesional di Samarinda.
+      </p>
+      <a class="btn btn-primary" href="/#galeri">Kembali ke halaman utama</a>
+    </section>
+
+    <section class="gallery-collection" aria-label="Dokumentasi Sunat Happy">
+      {
+        galleryImages.map((image) => (
+          <figure class="gallery-item">
+            <a
+              href={image.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Buka foto: ${image.caption}`}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>{image.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
